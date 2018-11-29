@@ -10,7 +10,7 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-rangeslider": "^2.2.0",
-    "react-scripts": "2.1.1",
+    "react-scripts": "^2.1.1",
     "reactstrap": "^6.5.0"
   },
   "scripts": {
@@ -27,5 +27,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0"
+  }
 }
