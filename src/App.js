@@ -90,8 +90,8 @@ class App extends Component {
                                 <span className='head' data-toggle="collapse" data-target={"#" + item.name}>{item.name}</span>
                                 <span className='collapse-icon'>
                                     <a href='#' data-toggle="collapse" data-target={"#" + item.name}>
-                                        <span class="sr-only">Collapse</span>
-                                        <span class="btn-collapse"></span>
+                                        <span className="sr-only">Collapse</span>
+                                        <span className="btn-collapse"></span>
                                     </a>
                                 </span>
                             </h4>
@@ -106,10 +106,10 @@ class App extends Component {
                                                         <a href="#">{el.supSubName}</a>
                                                         {el.subcontent.map(x =>
                                                             <ul className='list-unstyled sub-filter-links'>
-                                                            <li>
-                                                                <a href="#">{x}</a>
-                                                            </li>
-                                                        </ul>
+                                                                <li>
+                                                                    <a href="#">{x}</a>
+                                                                </li>
+                                                            </ul>
                                                         )}
                                                     </li>
                                                 </ul>
@@ -126,8 +126,8 @@ class App extends Component {
                                 <span className='head' data-toggle="collapse" data-target={"#" + item.name}>{item.name}</span>
                                 <span className='collapse-icon'>
                                     <a href='#' data-toggle="collapse" data-target={"#" + item.name}>
-                                        <span class="sr-only">Collapse</span>
-                                        <span class="btn-collapse"></span>
+                                        <span className="sr-only">Collapse</span>
+                                        <span className="btn-collapse"></span>
                                     </a>
                                 </span>
                             </h4>
@@ -169,8 +169,8 @@ class App extends Component {
                                 <span className='head' data-toggle="collapse" data-target={"#" + item.name} aria-expanded="true">{item.name}</span>
                                 <span className='collapse-icon'>
                                     <a href='#' data-toggle="collapse" data-target={"#" + item.name} aria-expanded="true">
-                                        <span class="sr-only">Collapse</span>
-                                        <span class="btn-collapse"></span>
+                                        <span className="sr-only">Collapse</span>
+                                        <span className="btn-collapse"></span>
                                     </a>
                                 </span>
                             </h4>
