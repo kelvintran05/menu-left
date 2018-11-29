@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 
-import './App.css';
+import './App.scss';
 
 class App extends Component {
     constructor(props, context) {
@@ -19,11 +19,29 @@ class App extends Component {
                 content: [
                     {
                         subName: 'Bed',
-                        content: ['Beds', 'Cabinets & Shelving', 'Chests', 'Desks', 'Lighting', 'Upholtery']
+                        content: [
+                            {
+                                supSubName: 'Beds',
+                                subcontent: ['Beds']
+                            },
+                            {
+                                supSubName: 'Cabinets & Shelving',
+                                subcontent: ['TV Cabinets']
+                            },
+                            {
+                                supSubName: 'Chests',
+                                subcontent: ['Chests of Drawers', 'Dressers', 'Nightstands', 'Trunks & End of Bed Chests']
+                            },
+                        ]
                     },
                     {
                         subName: 'Decor',
-                        content: ['Accents', 'Accessories']
+                        content: [
+                            {
+                                supSubName: 'Accents',
+                                subcontent: ['Canterburies', 'Sculptures']
+                            },
+                        ]
                     }
                 ],
                 type: 'tree'
@@ -33,14 +51,20 @@ class App extends Component {
                 content: [
                     {
                         subName: 'Classic',
-                        content: ['Casual', 'Formal', 'Rustic']
-                    },
-                    {
-                        subName: 'Modern',
-                        content: ['Casual', 'Formal']
-                    },
+                        content: [
+                            {
+                                supSubName: 'Casual',
+                                subcontent: [
+                                    {
+                                        SupName: 'Accessories',
+                                        subcontent: ['Trays']
+                                    },
+                                ]
+                            },
+                        ]
+                    }
                 ],
-                type: 'tree'
+                type: 'supTree'
             },
             {
                 name: 'Size',
@@ -55,6 +79,7 @@ class App extends Component {
             }
         ];
         const treeCategories = categories.filter(item => item.type === 'tree');
+        const supTreeCategories = categories.filter(item => item.type === 'supTree');
         const checkCategories = categories.filter(item => item.type === 'checkbox');
         return (
             <div>
@@ -74,11 +99,61 @@ class App extends Component {
                                 {item.content.map(i =>
                                     <div className='form-group'>
                                         <div className='checkbox no-icon'>
+                                            <a className = 'active' href="#">{i.subName}</a>
+                                            {i.content.map(el =>
+                                                <ul className='list-unstyled sub-filter-links'>
+                                                    <li>
+                                                        <a href="#">{el.supSubName}</a>
+                                                        {el.subcontent.map(x =>
+                                                            <ul className='list-unstyled sub-filter-links'>
+                                                            <li>
+                                                                <a href="#">{x}</a>
+                                                            </li>
+                                                        </ul>
+                                                        )}
+                                                    </li>
+                                                </ul>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                    {supTreeCategories.map(item =>
+                        <div className='list-filter-links'>
+                            <h4 className='type-head'>
+                                <span className='head' data-toggle="collapse" data-target={"#" + item.name}>{item.name}</span>
+                                <span className='collapse-icon'>
+                                    <a href='#' data-toggle="collapse" data-target={"#" + item.name}>
+                                        <span class="sr-only">Collapse</span>
+                                        <span class="btn-collapse"></span>
+                                    </a>
+                                </span>
+                            </h4>
+                            <div className='list-filter collapse' id={item.name}>
+                                {item.content.map(i =>
+                                    <div className='form-group'>
+                                        <div className='checkbox no-icon'>
                                             <a href="#">{i.subName}</a>
                                             {i.content.map(el =>
                                                 <ul className='list-unstyled sub-filter-links'>
                                                     <li>
-                                                        <a href="#">{el}</a>
+                                                        <a href="#">{el.supSubName}</a>
+                                                        {el.subcontent.map(x =>
+                                                            <ul className='list-unstyled sub-filter-links'>
+                                                                <li>
+                                                                    <a href="#">{x.SupName}</a>
+                                                                    {x.subcontent.map(y =>
+                                                                        <ul className='list-unstyled sub-filter-links'>
+                                                                          <li>
+                                                                              <a href="#">{y}</a>
+                                                                          </li>
+                                                                        </ul>
+                                                                    )}
+                                                                </li>
+                                                            </ul>
+                                                        )}
                                                     </li>
                                                 </ul>
                                             )}

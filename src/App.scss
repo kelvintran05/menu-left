@@ -1,0 +1,111 @@
+@import url("https://use.fontawesome.com/releases/v5.5.0/css/all.css");
+
+.list-filter-links {
+    margin-top: 37px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #C9C9C9;
+    .type-head {
+        display: table;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+        margin-top: 0;
+        width: 100%;
+        .head {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: 18px;
+            font-family: HurmeGeometricSans1-Light;
+            color: #000;
+        }
+        .head[data-toggle] {
+            cursor: pointer;
+            transition: color .2s;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+        .btn-collapse {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            background-color: transparent;
+            border: none;
+            color: #000;
+            transition: transform 150ms;
+            margin: 0;
+            font-size: 6px;
+            transform: translateY(-50%) rotate(180deg);
+            font-family: icons;
+        }
+        .collapsed .btn-collapse {
+            position: relative;
+            transform: translateY(-50%) rotate(0);
+        }
+        .btn-collapse:before {
+            font-size: 18px;
+            color:#000;
+            content: '\f107';
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900;
+        }
+        .collapse-icon {
+            display: table-cell;
+            text-align: right;
+            width: 30px;
+            padding-right: 20px;
+            padding-top: 6px;
+        }
+    }
+    .type-head a {
+        display: inline-block;
+    }
+    .list-filter {
+        .form-group {
+            padding-bottom: 10px;
+            margin-bottom: 0;
+            .checkbox {
+                margin: 0;
+                a {
+                    color: #999;
+                    transition: color .2s;
+                    font-size: 15px;
+                }
+                ul {
+                    margin-bottom: 0;
+                }
+                .list-unstyled {
+                    list-style: none;
+                }
+                .sub-filter-links {
+                    padding-left: 15px;
+                    padding-top: 10px;
+                    li a {
+                        font-size: 15px;
+                        font-family: HurmeGeometricSans1-Light;
+                        color: grey;
+                        letter-spacing: -.25px;
+                    }
+                    li ul li a {
+                        font-size: 14px;
+                    }
+                }
+            }
+            .checkbox a.active {
+                color: #000;
+            }
+        }
+        .checkbox label {
+            padding: 0 0 0 21px;
+            font-size: 15px;
+            line-height: 1.42857143;
+            font-family: HurmeGeometricSans1-Light;
+        }
+    }
+}
