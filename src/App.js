@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 // import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 import Slider from './Slider';
@@ -99,12 +100,12 @@ class App extends Component {
                             <div className='list-filter collapse' id={item.name}>
                                 {item.content.map((i, key) =>
                                     <div className='form-group'>
-                                        <div className='checkbox no-icon'>
-                                            <a className='a' href="#" onClick={ this.onCategorySelection }>{i.subName}</a>
+                                        <div className='checkbox no-icon level-one'>
+                                            <a className='room' href='#' onClick={ (e) => this.onCategorySelection(e, 'level-one') }>{i.subName}</a>
                                             {i.content.map(el =>
                                                 <ul className='list-unstyled sub-filter-links'>
-                                                    <li>
-                                                        <a href="#">{el.supSubName}</a>
+                                                    <li className='level-two'>
+                                                        <a className='room' onClick={ (e) => this.onCategorySelection(e, 'level-two') } href="#" >{el.supSubName}</a>
                                                         {el.subcontent.map(x =>
                                                             <ul className='list-unstyled sub-filter-links'>
                                                                 <li>
@@ -135,16 +136,16 @@ class App extends Component {
                             <div className='list-filter collapse' id={item.name}>
                                 {item.content.map(i =>
                                     <div className='form-group'>
-                                        <div className='checkbox no-icon'>
-                                            <a href="#">{i.subName}</a>
+                                        <div className='checkbox a no-icon'>
+                                            <a className='life-style' onClick={ (e) => this.onCategorySelection(e, 'a') } href="#">{i.subName}</a>
                                             {i.content.map(el =>
                                                 <ul className='list-unstyled sub-filter-links'>
-                                                    <li>
-                                                        <a href="#">{el.supSubName}</a>
+                                                    <li className='b'>
+                                                        <a className='life-style' onClick={ (e) => this.onCategorySelection(e, 'b') } href="#">{el.supSubName}</a>
                                                         {el.subcontent.map(x =>
                                                             <ul className='list-unstyled sub-filter-links'>
-                                                                <li>
-                                                                    <a href="#">{x.SupName}</a>
+                                                                <li className='c'>
+                                                                    <a className='life-style' onClick={ (e) => this.onCategorySelection(e, 'c') } href="#">{x.SupName}</a>
                                                                     {x.subcontent.map(y =>
                                                                         <ul className='list-unstyled sub-filter-links'>
                                                                             <li>
@@ -198,8 +199,22 @@ class App extends Component {
             </div>
         );
     }
-    onCategorySelection = (e) => {
-        console.log('<<<<', e.target.className);
+    onCategorySelection = (e, className) => {
+        const elClassName = ReactDOM.findDOMNode(this).getElementsByClassName(className);
+        console.log('<<<<', elClassName);
+        if (e.target.className.indexOf('active') > -1) {
+            e.target.className = e.target.className.replace(' active', '');
+        } 
+        else {
+            for (let i = 0; i < elClassName.length; i++) {
+                if (elClassName[i].childNodes[0].className.indexOf('active') > -1) {
+                    elClassName[i].childNodes[0].className = elClassName[i].childNodes[0].className.replace(' active', '');
+                    break;
+
+                }
+            }
+            e.target.classList.add('active');
+        };
     }
     handleChangeReverse = (value) => {
         this.setState({
