@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Slider from 'react-rangeslider';
+// import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
+import Slider from './Slider';
 
 import './App.scss';
 
@@ -96,10 +97,10 @@ class App extends Component {
                                 </span>
                             </h4>
                             <div className='list-filter collapse' id={item.name}>
-                                {item.content.map(i =>
+                                {item.content.map((i, key) =>
                                     <div className='form-group'>
                                         <div className='checkbox no-icon'>
-                                            <a className = 'active' href="#">{i.subName}</a>
+                                            <a className='a' href="#" onClick={ this.onCategorySelection }>{i.subName}</a>
                                             {i.content.map(el =>
                                                 <ul className='list-unstyled sub-filter-links'>
                                                     <li>
@@ -146,9 +147,9 @@ class App extends Component {
                                                                     <a href="#">{x.SupName}</a>
                                                                     {x.subcontent.map(y =>
                                                                         <ul className='list-unstyled sub-filter-links'>
-                                                                          <li>
-                                                                              <a href="#">{y}</a>
-                                                                          </li>
+                                                                            <li>
+                                                                                <a href="#">{y}</a>
+                                                                            </li>
                                                                         </ul>
                                                                     )}
                                                                 </li>
@@ -186,22 +187,19 @@ class App extends Component {
                             </div>
                         </div>
                     )}
-                    {/* <div className='slider orientation-reversed'>
-            <div className='slider-horizontal'>
-              <Slider
-                min={0}
-                max={10}
-                value={reverseValue}
-                orientation='horizontal'
-                onChange={this.handleChangeReverse}
-              />
-              <div className='value'>{reverseValue}</div>
-            </div>
-          </div> */}
+                    <div className='slider orientation-reversed'>
+                        <div className='slider-horizontal'>
+                                <Slider/>
+                            {/* <div className='value'>{reverseValue}</div> */}
+                        </div>
+                    </div>
                 </div>
                 <div className='col-md-9'></div>
             </div>
         );
+    }
+    onCategorySelection = (e) => {
+        console.log('<<<<', e.target.className);
     }
     handleChangeReverse = (value) => {
         this.setState({
